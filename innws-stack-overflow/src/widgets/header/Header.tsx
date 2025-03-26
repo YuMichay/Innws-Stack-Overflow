@@ -1,7 +1,7 @@
 import { Button, Stack } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import Logo from "../../shared/ui/Logo";
+import { Logo } from '../../shared/index';
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   const isQuestionPage = location.pathname === "/api/questions";
 
   return(
-    <Stack direction="row" justifyContent="space-between" alignItems="center" padding="20px">
+    <header>
       <Logo />
       <Stack direction="row" columnGap="20px">
         {isQuestionPage ?? (
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
           )
         }
       </Stack>
-    </Stack>
+    </header>
   )
 }
 

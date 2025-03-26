@@ -1,4 +1,4 @@
-import { Box, List, Stack } from "@mui/material";
+import { Box, List } from "@mui/material";
 import HomeIcon from '@mui/icons-material/Home';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import EmailIcon from '@mui/icons-material/Email';
@@ -6,15 +6,15 @@ import ContactMailIcon from '@mui/icons-material/ContactMail';
 import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer';
 import GroupIcon from '@mui/icons-material/Group';
 
-import AccountInfoMini from "../../entities/user/ui/AccountInfoMini";
-import CustomListItem from "../../shared/ui/CustomListItem";
+import { AccountInfoMini } from '../../entities/index';
+import { CustomListItem } from '../../shared/index';
 
 const SideBar: React.FC = () => {
   const isAuth = false;
   // const { isAuth } = useAuth();
 
   return(
-    <Stack direction="row" justifyContent="space-between" alignItems="center" paddingBottom="20px">
+    <div className="sidebar">
       {isAuth ?? (
         <AccountInfoMini />
       )}
@@ -28,7 +28,7 @@ const SideBar: React.FC = () => {
           <CustomListItem linkPath={"/"} icon={<GroupIcon />} text="Users" />
         </List>
       </Box>
-    </Stack>
+    </div>
   )
 }
 

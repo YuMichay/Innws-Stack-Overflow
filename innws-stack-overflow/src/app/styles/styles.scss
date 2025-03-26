@@ -1,9 +1,86 @@
 @import url('https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap');
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 body {
-  padding: 20px;
   background-color: #121212;
   color: #D3D3D3;
   font-family: "Tektur", sans-serif;
-  box-sizing: 'border-box';
+}
+
+header {
+  width: 100%;
+  padding: 20px;
+  grid-area: header;
+}
+
+header, .sidebar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app__container {
+  display: grid;
+  grid-template-areas: 
+    "header header"
+    "sidebar main";
+  align-items: flex-start;
+  grid-template-rows: auto 1fr;
+}
+
+.sidebar {
+  min-width: 200px;
+  grid-area: sidebar;
+}
+
+.main {
+  grid-area: main;
+}
+
+.page__home {
+  margin: 20px;
+  padding: 20px;
+  border-radius: 14px;
+  background: radial-gradient(circle at 30% 30%, rgba(0, 255, 0, 0.2), transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(255, 61, 119, 0.2), transparent 50%);
+  scrollbar-width: none;
+
+  .page__home-snippets {
+    width: calc(100vw - 200px - 120px);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .page__home-snippet {
+      padding: 0px 20px;
+      border-radius: 14px;
+      background-color: rgba(#D3D3D3, 0.3);
+
+      .page__home-snippet-header {
+        border-bottom: 2px solid #121212;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+  
+      .page__home-snippet-code {
+        max-width: 100%;
+        word-break: break-all;
+      }
+
+      .page__home-snippet-footer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-bottom: 20px;
+        color: #979797
+      }
+    }
+  }
 }

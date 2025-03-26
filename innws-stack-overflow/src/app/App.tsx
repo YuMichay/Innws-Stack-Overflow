@@ -1,12 +1,11 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route, Outlet } from 'react-router-dom';
-import { createTheme, Stack, ThemeProvider } from '@mui/material';
+import { CircularProgress, createTheme, Stack, ThemeProvider } from '@mui/material';
 
 import './styles/styles.scss';
 
 import { QueryProvider } from './providers/QueryProvider';
-import Header from '../widgets/header/Header';
-import SideBar from '../widgets/sidebar/Sidebar';
+import { Header, SideBar } from '../widgets/index';
 import { HomePage, LoginPage, RegisterPage } from './routes/routes';
 
 const theme = createTheme({
@@ -27,6 +26,9 @@ const theme = createTheme({
     primary: {
       main: '#00FF00',
     },
+    secondary: {
+      main: '#D3D3D3',
+    },
     action: {
       active: '#00FF00',
       hover: '#FF3D77',
@@ -42,16 +44,28 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <QueryProvider>
         <Router>
-          <Suspense>
+          <Suspense fallback={
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                height: "100vh",
+                width: "100%",
+              }}
+            >
+              <CircularProgress />
+            </Stack>
+          }>
             <Routes>
               <Route path='/' element={
-                <>
+                <div className='app__container'>
                   <Header />
-                  <Stack direction="row">
-                    <SideBar />
+                  <SideBar />
+                  <div className='main'>
                     <Outlet />
-                  </Stack>
-                </>
+                  </div>
+                </div>
               }>
                 <Route path='/' element={<HomePage />} />
               </Route>
