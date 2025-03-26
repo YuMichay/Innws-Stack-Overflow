@@ -1,6 +1,6 @@
 type sortTypes = "ASC" | "DESC";
 type role = "admin" | "user";
-type markType = "like" | "dislike";
+export type markType = "like" | "dislike";
 
 interface User {
   id: string,

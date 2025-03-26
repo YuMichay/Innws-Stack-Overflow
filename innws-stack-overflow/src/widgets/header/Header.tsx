@@ -2,13 +2,19 @@ import { Button, Stack } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Logo } from '../../shared/index';
+import { useAuth } from "../../shared/utils/authUtils";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const isAuth = false;
-  // const { isAuth } = useAuth();
+  const { isAuth, setIsAuth } = useAuth();
   const isQuestionPage = location.pathname === "/api/questions";
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setIsAuth(false);
+    navigate("/");
+  }
 
   return(
     <header>
@@ -18,7 +24,7 @@ const Header: React.FC = () => {
           <Button variant="contained">Ask Question</Button>
         )}
         {isAuth ? (
-            <Button variant="contained">Sign out</Button>
+            <Button variant="contained" onClick={() => handleLogout()}>Log out</Button>
           ) : (
             <>
               <Button variant="contained" onClick={() => navigate("/register")}>Sign up</Button>

@@ -1,6 +1,6 @@
 const AccountInfoMini: React.FC = () => {
   return (
-    <>Account</>
+    <div className="account-mini">Account</div>
   )
 }
 
