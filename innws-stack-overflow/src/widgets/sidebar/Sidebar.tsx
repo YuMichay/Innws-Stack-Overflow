@@ -8,8 +8,7 @@ import GroupIcon from '@mui/icons-material/Group';
 
 import { AccountInfoMini } from '../../entities/index';
 import { CustomListItem } from '../../shared/index';
-import { useAuth } from "../../shared/utils/authUtils";
-
+import { useAuth } from "../../shared/hooks/useAuth";
 
 const SideBar: React.FC = () => {
   const { isAuth } = useAuth();

@@ -7,7 +7,7 @@ import { useState } from "react";
 
 import { schemaLogin } from "../schema/schema";
 import { loginUser } from "../api/loginAPI";
-import { useAuth } from "../../../shared/utils/authUtils";
+import { useAuth } from "../../../shared/hooks/useAuth";
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -21,6 +21,10 @@ const LoginForm: React.FC = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schemaLogin),
+    defaultValues: {
+      username: "",
+      password: "",
+    },
   });
 
   const onSubmit = async(data: AuthData) => {

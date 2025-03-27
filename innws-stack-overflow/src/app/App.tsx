@@ -5,9 +5,9 @@ import { CircularProgress, createTheme, Stack, ThemeProvider } from '@mui/materi
 import './styles/styles.scss';
 
 import { QueryProvider } from './providers/QueryProvider';
+import { AuthProvider } from './providers/AuthProvider';
 import { Header, SideBar } from '../widgets/index';
 import { HomePage, LoginPage, RegisterPage } from './routes/routes';
-import { AuthProvider } from '../shared/utils/authUtils';
 
 const theme = createTheme({
   components: {

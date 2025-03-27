@@ -1,8 +1,9 @@
 import { Button, Stack } from "@mui/material";
 import { useLocation, useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie';
 
 import { Logo } from '../../shared/index';
-import { useAuth } from "../../shared/utils/authUtils";
+import { useAuth } from "../../shared/hooks/useAuth";
 
 const Header: React.FC = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const Header: React.FC = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("user");
+    Cookies.remove("token");
     setIsAuth(false);
     navigate("/");
   }

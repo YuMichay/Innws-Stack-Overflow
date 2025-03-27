@@ -13,7 +13,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { getSnippets } from "../../shared/api/snippets";
 import { CustomIconButton } from "../../shared";
 import { MarkButton } from "../../features";
-import { useAuth } from "../../shared/utils/authUtils";
+import { useAuth } from "../../shared/hooks/useAuth";
 
 const HomePage: React.FC = () => {
   const navigate = useNavigate();

@@ -19,6 +19,11 @@ const RegisterForm: React.FC = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schemaRegister),
+    defaultValues: {
+      username: "",
+      password: "",
+      confirmPassword: "",
+    },
   });
 
   const onSubmit = async(data: AuthData) => {
