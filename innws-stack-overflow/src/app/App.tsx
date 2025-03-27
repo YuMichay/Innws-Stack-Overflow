@@ -7,7 +7,7 @@ import './styles/styles.scss';
 import { QueryProvider } from './providers/QueryProvider';
 import { AuthProvider } from './providers/AuthProvider';
 import { Header, SideBar } from '../widgets/index';
-import { HomePage, LoginPage, RegisterPage } from './routes/routes';
+import { HomePage, LoginPage, PostPage, RegisterPage } from './routes/routes';
 
 const theme = createTheme({
   components: {
@@ -70,6 +70,7 @@ const App: React.FC = () => {
                   </div>
                 }>
                   <Route path='/' element={<HomePage />} />
+                  <Route path='snippets/:id' element={<PostPage />} />
                 </Route>
                 <Route path='/register' element={<RegisterPage />} />
                 <Route path='/login' element={<LoginPage />} />

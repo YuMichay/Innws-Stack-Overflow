@@ -2,7 +2,7 @@ type sortTypes = "ASC" | "DESC";
 type role = "admin" | "user";
 export type markType = "like" | "dislike";
 
-interface User {
+export interface User {
   id: string,
   username: string,
   role: role,
@@ -14,7 +14,7 @@ interface Mark {
   user: User,
 }
 
-interface Comment {
+export interface Comment {
   id: string,
   content: string,
 }

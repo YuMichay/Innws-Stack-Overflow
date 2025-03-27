@@ -1,5 +1,7 @@
 import axios from "axios";
 
+import { BASE_URL } from "../constants/baseUrl";
+
 export const api = axios.create({
-  baseURL: "https://codelang.vercel.app/api",
+  baseURL: BASE_URL,
 });

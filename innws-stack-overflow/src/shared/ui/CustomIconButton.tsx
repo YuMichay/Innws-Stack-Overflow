@@ -13,7 +13,7 @@ interface CustomIconButtonProps {
     IconButtonPropsColorOverrides
   > | string,
   disabled: boolean,
-  onClick: () => void,
+  onClick: () => void | undefined,
 }
 
 const CustomIconButton: React.FC<CustomIconButtonProps> = ({ count, icon, color, disabled, onClick }) => {

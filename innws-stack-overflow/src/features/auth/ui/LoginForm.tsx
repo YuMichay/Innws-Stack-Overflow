@@ -35,7 +35,9 @@ const LoginForm: React.FC = () => {
       const response = await loginUser({username: data.username, password: data.password});
       
       if (response.data) {
-        localStorage.setItem("user", JSON.stringify(response.data));
+        localStorage.setItem("id", JSON.stringify(response.data.id));
+        localStorage.setItem("username", JSON.stringify(response.data.username));
+        localStorage.setItem("role", JSON.stringify(response.data.role));
         setIsAuth(true);
         navigate("/");
       }

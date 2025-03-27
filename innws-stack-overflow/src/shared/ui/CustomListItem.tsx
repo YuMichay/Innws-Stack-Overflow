@@ -1,5 +1,5 @@
 import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { ReactNode } from "react";
 
 interface CustomListItemProps {
@@ -9,8 +9,14 @@ interface CustomListItemProps {
 }
 
 const CustomListItem: React.FC<CustomListItemProps> = ({linkPath, icon, text}) => {
+  const location = useLocation();
+
+  const getActiveClass = (path: string) => {
+    return location.pathname === path ? "active" : "";
+  };
+
   return (
-    <ListItem component={Link} to={linkPath} sx={{ "&:hover": { backgroundColor: "#333" }}}>
+    <ListItem className={getActiveClass(linkPath)} component={Link} to={linkPath} sx={{ "&:hover": { backgroundColor: "#333", borderRadius: "14px" }}}>
       <ListItemIcon>{icon}</ListItemIcon>
       <ListItemText primary={text} />
     </ListItem>

@@ -12,7 +12,9 @@ const Header: React.FC = () => {
   const isQuestionPage = location.pathname === "/api/questions";
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem("id");
+    localStorage.removeItem("username");
+    localStorage.removeItem("role");
     Cookies.remove("token");
     setIsAuth(false);
     navigate("/");

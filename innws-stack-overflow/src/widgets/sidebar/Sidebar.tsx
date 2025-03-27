@@ -21,11 +21,11 @@ const SideBar: React.FC = () => {
       <Box>
         <List>
           <CustomListItem linkPath={"/"} icon={<HomeIcon />} text="Home" />
-          {isAuth && <CustomListItem linkPath={"/"} icon={<AccountBoxIcon />} text="My Account" />}
-          <CustomListItem linkPath={"/"} icon={<EmailIcon />} text="Post snippet" />
-          {isAuth && <CustomListItem linkPath={"/"} icon={<ContactMailIcon />} text="My snippets" />}
-          <CustomListItem linkPath={"/"} icon={<QuestionAnswerIcon />} text="Questions" />
-          <CustomListItem linkPath={"/"} icon={<GroupIcon />} text="Users" />
+          {isAuth && <CustomListItem linkPath={"/me"} icon={<AccountBoxIcon />} text="My Account" />}
+          <CustomListItem linkPath={"/snippets"} icon={<EmailIcon />} text="Post snippet" />
+          {isAuth && <CustomListItem linkPath={"/my-snippets"} icon={<ContactMailIcon />} text="My snippets" />}
+          <CustomListItem linkPath={"/questions"} icon={<QuestionAnswerIcon />} text="Questions" />
+          <CustomListItem linkPath={"/users"} icon={<GroupIcon />} text="Users" />
         </List>
       </Box>
     </div>

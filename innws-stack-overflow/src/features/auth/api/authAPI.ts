@@ -9,8 +9,8 @@ export const authUser = async() => {
     } else {
       return false;
     }
-  } catch (error) {
-    console.error("Auth check failed", error);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (err) {
     return false;
   }
 }
