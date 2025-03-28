@@ -17,6 +17,7 @@ interface Mark {
 export interface Comment {
   id: string,
   content: string,
+  user: User,
 }
 
 export interface Snippet {

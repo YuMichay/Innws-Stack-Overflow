@@ -1,53 +1,48 @@
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
-import { CommentField, SnippetField } from "../../entities";
-import { getSnippet } from "../../shared/api/snippets";
-import { useEffect, useState } from "react";
-import { Snippet } from "../../shared/types/snippets";
+import { SnippetField } from "../../entities";
 import { ErrorTypography, Spinner } from "../../shared";
+import CommentList from "../../widgets/comments-list/CommentsList";
+import { useSnippet } from "../../shared/hooks/useSnippet";
+import { addComment } from "../../features/add-comment/api/addComment";
+import { AddComment } from "../../features";
 
 const PostPage: React.FC = () => {
   const { id } = useParams();
-  const [snippet, setSnippet] = useState<Snippet | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const { snippet, comments, loading, error } = useSnippet(id);
+  const user = localStorage.getItem("username");
+  const [commentText, setCommentText] = useState("");
 
-  useEffect(() => {
-    const fetchSnippet = async () => {
-      if (!id) return;
+  const handleAddComment = async () => {
+    if (!commentText.trim() || !id || !user) return;
 
-      try {
-        const data = await getSnippet(+id);
-        setSnippet(data);
-      } catch (err) {
-        setError("Failed to fetch snippet");
-        console.error(err);
-      } finally {
-        setLoading(false);
+    try {
+      if (snippet) {
+        await addComment({
+          content: commentText,
+          snippetId: +snippet.id,
+        });
+        setCommentText("");
       }
-    };
+    } catch (err) {
+      console.error("Add comment failed", err);
+    }
+  };
 
-    fetchSnippet();
-  }, []);
+  if (loading) (<Spinner />);
+  if (error) (<ErrorTypography text={error} />);
 
   return (
     <div className="page__post">
-      {loading && <Spinner />}
-      {error && <ErrorTypography text={error} />}
       {snippet && 
         <div className="page__post-list">
           <SnippetField
             key={snippet.id}
             snippet={snippet}
           />
-          {snippet.comments && (
-            snippet.comments.map((comment) => (
-              <CommentField
-                key={comment.id}
-                {...comment}
-              />
-            ))
-          )}
+          <AddComment commentText={commentText} setCommentText={setCommentText} handleAddComment={handleAddComment} />
+          {comments && <CommentList comments={comments} />}
         </div>
       }
     </div>

@@ -1,13 +1,11 @@
-import { deletedUser } from "../constants/deletedUser";
 import { User } from "../types/snippets";
 import { api } from "./api";
 
-export const getUser = async (id: number): Promise<User> => {
+export const getUser = async (id: number): Promise<User | undefined> => {
   try {
-    const user: User = (await api.get(`/users/${id}`));
+    const user: User = (await api.get(`/api/users/${id}`)).data.data;
     return user;
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   } catch(err) {
-    return deletedUser;
+    console.error("Can't load data", err);
   }
 };

@@ -16,6 +16,6 @@ export interface MarkButtonProps {
 }
 
 export interface MarkProps {
-  id: string,
+  id: number,
   type: markType,
 }
