@@ -6,3 +6,4 @@ export { default as CommentField } from './comment/ui/CommentField.tsx';
 export { default as UserField } from './user/ui/UserField.tsx';
 export { default as UserInfo } from './user/ui/UserInfo.tsx';
 export { default as UserStatistic } from './user/ui/UserStatistic.tsx';
+export { default as QuestionField } from './question/ui/QuestionField.tsx';

@@ -1,32 +1,33 @@
 import { useState } from "react";
-import { useUsers } from "../../entities/user/api/getUsers";
-import { ErrorTypography, GreetingTypography, Spinner } from "../../shared";
-import { UsersList } from "../../widgets";
 import { Pagination } from "@mui/material";
 
-const UsersPage: React.FC = () => {
+import { ErrorTypography, GreetingTypography, Spinner } from "../../shared";
+import { useQuestions } from "../../entities/question/api/getQuestions";
+import { QuestionsList } from "../../widgets";
+
+const QuestionsPage: React.FC = () => {
   const [page, setPage] = useState(1);
-  const { data, isLoading, isError } = useUsers(page);
+  const { data, isLoading, isError } = useQuestions(page);
   const totalPages = data?.meta?.totalPages || 1;
 
   return (
-    <div className="page__users">
+    <div className="page__questions">
       {isError ? (
-        <ErrorTypography text="Can't get users" />
+        <ErrorTypography text="Can't get questions" />
       ) : (
         <>
-          <GreetingTypography text="Welcome to Codelang Users!" />
+          <GreetingTypography text="Welcome to Codelang Questions!" />
 
-          <div className="page__users-users">
+          <div className="page__users-questions">
             {isLoading ? (
               <Spinner />
             ) : (
               <>
                 {data?.data.length === 0 && (
-                  <ErrorTypography text="No users found" />
+                  <ErrorTypography text="No snippets found" />
                 )}
                 {data && data?.data.length > 0 && (
-                  <UsersList users={data.data} />
+                  <QuestionsList questions={data.data} />
                 )}
                 <Pagination
                   count={totalPages}
@@ -44,4 +45,4 @@ const UsersPage: React.FC = () => {
   )
 }
 
-export default UsersPage;
+export default QuestionsPage;
