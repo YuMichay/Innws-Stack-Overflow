@@ -5,6 +5,6 @@ export const setNewUsername = async (username: string) => {
     const response = await api.patch('/api/me', {username});
     return response.data;
   } catch(err) {
-    console.log("Failed to change username", err);
+    console.error("Failed to change username", err);
   }
 }

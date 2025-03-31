@@ -24,6 +24,6 @@ export const deleteProfile = async () => {
     const response = (await api.delete('/api/me')).data;
     return response;
   } catch(err) {
-    console.log("Deleting is failed", err);
+    console.error("Deleting is failed", err);
   }
 }

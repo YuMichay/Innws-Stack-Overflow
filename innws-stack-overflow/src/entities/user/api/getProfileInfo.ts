@@ -3,7 +3,7 @@ import { getProfile } from "../../../shared/api/profile";
 
 export const useProfile = () => {
   return useQuery({
-    queryKey: ["user"],
+    queryKey: ["account"],
     queryFn: () => getProfile(),
   });
 };

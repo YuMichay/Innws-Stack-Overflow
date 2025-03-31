@@ -12,6 +12,7 @@ interface UserFieldProps {
 
 const UserField: React.FC<UserFieldProps> = ({ user }) => {
   const navigate = useNavigate();
+  
   const handleClick = () => {
     navigate(`/users/${user.id}`);
   }

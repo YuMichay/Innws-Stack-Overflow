@@ -75,7 +75,14 @@ header, .sidebar {
 
 // 3 - HOME
 
-.page__home, .page__post, .page__my-posts, .page__account, .page__create-post, .page__edit-post, .page__users {
+.page__home, 
+.page__post, 
+.page__my-posts, 
+.page__account, 
+.page__create-post, 
+.page__edit-post, 
+.page__users,
+.page__user {
   margin: 20px;
   padding: 20px;
   border-radius: 14px;
@@ -183,7 +190,7 @@ header, .sidebar {
   align-items: center;
 }
 
-.account, .account-edit {
+.account, .account-edit, .user-wrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -198,7 +205,7 @@ header, .sidebar {
   row-gap: 40px;
 }
 
-.account-wrapper {
+.account-wrapper, .user-info-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -206,7 +213,8 @@ header, .sidebar {
   gap: 30px;
 }
 
-.account-wrapper div:nth-child(1) {
+.account-wrapper div:nth-child(1),
+.user-info-wrapper div:nth-child(1) {
   width: 120px;
   height: 120px;
 
@@ -265,4 +273,13 @@ header, .sidebar {
   flex-direction: row;
   align-items: center;
   gap: 10px;
+}
+
+// 10 - USER
+
+.user-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 60px;
 }

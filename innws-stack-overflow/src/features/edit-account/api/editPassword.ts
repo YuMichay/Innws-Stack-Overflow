@@ -5,6 +5,6 @@ export const setNewPassword = async (oldPassword: string, newPassword: string) =
     const response = await api.patch('/api/me/password', {oldPassword, newPassword});
     return response.data;
   } catch(err) {
-    console.log("Failed to change password", err);
+    console.error("Failed to change password", err);
   }
 }

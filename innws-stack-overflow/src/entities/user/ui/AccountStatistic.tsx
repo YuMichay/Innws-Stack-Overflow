@@ -1,13 +1,13 @@
 import { Typography } from "@mui/material";
-import { useProfile } from "../api/getProfileInfo";
 import { useStatistic } from "../api/getProfileStatistic";
+import { useProfile } from "../api/getProfileInfo";
 
 const AccountStatistic: React.FC = () => {
   const id = useProfile().data?.id || 0;
   const statistic = useStatistic(+id).data;
 
   return (
-    <div className="account-statistic">
+    <div className="user-statistic">
       <Typography variant="subtitle2">Rating: {statistic && statistic.rating}</Typography>
       <Typography variant="subtitle2">Snippets: {statistic && statistic.snippetsCount}</Typography>
       <Typography variant="subtitle2">Comments: {statistic && statistic.commentsCount}</Typography>
