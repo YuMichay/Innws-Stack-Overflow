@@ -9,13 +9,13 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { isAuth, setIsAuth } = useAuth();
-  const isQuestionPage = location.pathname === "/api/questions";
+  const isQuestionPage = location.pathname === "/questions";
 
   return(
     <header>
       <Logo />
       <Stack direction="row" columnGap="20px">
-        {isQuestionPage ?? (
+        {isQuestionPage && (
           <Button variant="contained">Ask Question</Button>
         )}
         {isAuth ? (

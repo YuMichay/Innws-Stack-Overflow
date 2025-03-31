@@ -1,48 +1,37 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { Typography } from "@mui/material";
 
 import { SnippetField } from "../../entities";
-import { ErrorTypography, Spinner } from "../../shared";
-import CommentList from "../../widgets/comments-list/CommentsList";
-import { useSnippet } from "../../shared/hooks/useSnippet";
-import { addComment } from "../../features/add-comment/api/addComment";
 import { AddComment } from "../../features";
+import { ErrorTypography, Spinner } from "../../shared";
+import { useAddComment } from "../../features/add-comment/api/useAddComment";
+import { useSnippet } from "../../entities/post/api/useSnippet";
+import { useComments } from "../../entities/comment/api/useComment";
+import { CommentsList } from "../../widgets";
+
 
 const PostPage: React.FC = () => {
   const { id } = useParams();
-  const { snippet, comments, loading, error } = useSnippet(id);
   const user = localStorage.getItem("username");
   const [commentText, setCommentText] = useState("");
 
+  const { data: snippet, isLoading: snippetLoading, error: snippetError } = useSnippet(id);
+  const { data: comments, isLoading: commentsLoading, error: commentsError } = useComments(id);
+  const addCommentMutation = useAddComment(id, () => setCommentText(""));
+
   const handleAddComment = async () => {
     if (!commentText.trim() || !id || !user) return;
-
-    try {
-      if (snippet) {
-        await addComment({
-          content: commentText,
-          snippetId: +snippet.id,
-        });
-        setCommentText("");
-      }
-    } catch (err) {
-      console.error("Add comment failed", err);
-    }
+    addCommentMutation.mutate(commentText);
   };
-
-  if (loading) (<Spinner />);
-  if (error) (<ErrorTypography text={error} />);
 
   return (
     <div className="page__post">
       {snippet && 
         <div className="page__post-list">
-          <SnippetField
-            key={snippet.id}
-            snippet={snippet}
-          />
+          {snippetLoading ? <Spinner /> : snippetError ? <ErrorTypography text="Cannot find snippet" /> : <SnippetField key={snippet.id} snippet={snippet} />}
           <AddComment commentText={commentText} setCommentText={setCommentText} handleAddComment={handleAddComment} />
-          {comments && <CommentList comments={comments} />}
+          {commentsLoading ? <Spinner /> : commentsError ? <ErrorTypography text="Cannot find comments" /> : comments ? <CommentsList comments={comments} /> : <Typography variant="subtitle1">No comments yet</Typography>}
         </div>
       }
     </div>
