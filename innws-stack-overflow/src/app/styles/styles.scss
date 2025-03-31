@@ -118,6 +118,12 @@ header, .sidebar {
     align-items: center;
     padding-bottom: 20px;
     color: #979797;
+
+    .snippet-footer-icons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
   }
 }
 

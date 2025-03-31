@@ -5,3 +5,4 @@ export { default as ErrorTypography } from './ui/ErrorTypography.tsx';
 export { default as GreetingTypography } from './ui/GreetingTypography.tsx';
 export { default as Spinner } from './ui/Spinner.tsx';
 export { default as CustomAvatar } from './ui/CustomAvatar.tsx';
+export { default as FormPost } from './ui/FormPost.tsx';

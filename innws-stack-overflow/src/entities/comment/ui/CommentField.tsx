@@ -2,8 +2,7 @@ import PersonIcon from '@mui/icons-material/Person';
 
 import { Comment } from "../../../shared/types/snippets";
 
-const CommentField: React.FC<Comment> = ({ id, content, user }) => {
-  console.log(id)
+const CommentField: React.FC<Comment> = ({ content, user }) => {
 
   return (
     <div className="comment-field">

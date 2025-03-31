@@ -1,4 +1,5 @@
 import { User } from "./users";
+import { ObjectSchema } from "yup";
 
 type sortTypes = "ASC" | "DESC";
 export type markType = "like" | "dislike";
@@ -50,3 +51,24 @@ export interface SnippetData {
     last: string
   }
 }
+
+export interface PostData {
+  language: string,
+  code: string,
+}
+
+type Languages = { id: string; name: string };
+
+export interface FormPostProps {
+  schema: ObjectSchema<{
+    language: string,
+    code: string,
+  }>,
+  onSubmit: (data: PostData) => Promise<void>, 
+  languages: Languages[], 
+  loading: boolean, 
+  error: string | null,
+  type: string,
+  id?: string,
+}
+
