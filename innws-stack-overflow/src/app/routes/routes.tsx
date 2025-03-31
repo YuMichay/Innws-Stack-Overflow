@@ -39,9 +39,8 @@ const RoutesWrapper: React.FC = () => {
             <Route path='/snippet/edit' element={<EditPostPage />} />
           </Route>
           <Route path='/snippets/me' element={<MyPostsPage />} />
-          <Route path='/users' element={<UsersPage />}>
-            <Route path=":id" element={<UserPage />} />
-          </Route>
+          <Route path='/users' element={<UsersPage />} />
+          <Route path="/users/:id" element={<UserPage />} />
           <Route path='/questions' element={<QuestionsPage />}>
             <Route path='create' element={<CreateQuestionPage />} />
             <Route path='edit' element={<EditQuestionPage />} />

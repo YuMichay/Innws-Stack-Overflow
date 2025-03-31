@@ -8,7 +8,7 @@ import { editPost } from "../api/editPost";
 import { FormPost } from "../../../shared";
 import { schema } from "../../create-post/schema/schema";
 
-const EditPost: React.FC<number> = () => {
+const EditPost: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [loading, setLoading] = useState(false);

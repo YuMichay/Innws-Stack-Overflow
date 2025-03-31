@@ -1,3 +1,5 @@
+import { sortTypes } from "./snippets";
+
 type role = "admin" | "user";
 
 export interface User {
@@ -22,4 +24,31 @@ export interface UserStatistic {
   username: string,
   role: role,
   statistic: Statistic,
+}
+
+export interface UserData {
+  data: User[],
+  meta: {
+    itemsPerPage: number,
+    totalItems: number,
+    currentPage: number,
+    totalPages: number,
+    sortBy: [
+      [
+        string,
+        sortTypes
+      ]
+    ],
+    searchBy: string[],
+    search: string,
+    select: string[],
+    filter: object,
+  },
+  links: {
+    first: string,
+    previous: string,
+    current: string,
+    next: string,
+    last: string
+  }
 }

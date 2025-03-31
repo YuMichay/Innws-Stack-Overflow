@@ -75,7 +75,7 @@ header, .sidebar {
 
 // 3 - HOME
 
-.page__home, .page__post, .page__my-posts, .page__account, .page__create-post, .page__edit-post {
+.page__home, .page__post, .page__my-posts, .page__account, .page__create-post, .page__edit-post, .page__users {
   margin: 20px;
   padding: 20px;
   border-radius: 14px;
@@ -245,4 +245,24 @@ header, .sidebar {
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+// 9 - USERS
+
+.user-field {
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 14px;
+  background-color: rgba(#D3D3D3, 0.3);
+}
+
+.user-field-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }

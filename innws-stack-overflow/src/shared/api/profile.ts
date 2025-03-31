@@ -18,3 +18,12 @@ export const getProfileStatistic = async (id: number): Promise<Statistic | undef
     console.error("Can't load data", err);
   }
 };
+
+export const deleteProfile = async () => {
+  try {
+    const response = (await api.delete('/api/me')).data;
+    return response;
+  } catch(err) {
+    console.log("Deleting is failed", err);
+  }
+}

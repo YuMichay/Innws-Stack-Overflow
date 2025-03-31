@@ -6,7 +6,7 @@ import { CustomAvatar, CustomIconButton } from "../../../shared";
 import { useProfile } from "../api/getProfileInfo";
 import { logoutUserUtils } from "../../../shared/utils/logoutUserUtils";
 import { useAuth } from "../../../shared/hooks/useAuth";
-import { deleteUser } from "../../../shared/api/user";
+import { deleteProfile } from "../../../shared/api/profile";
 
 const AccountInfo: React.FC = () => {
   const { setIsAuth } = useAuth();
@@ -16,7 +16,7 @@ const AccountInfo: React.FC = () => {
     if (act === 'logout') {
       logoutUserUtils(setIsAuth);
     } else if (act === 'delete') {
-      deleteUser();
+      deleteProfile();
       logoutUserUtils(setIsAuth);
     }
   }

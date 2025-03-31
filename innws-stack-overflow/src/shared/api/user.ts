@@ -9,12 +9,3 @@ export const getUser = async (id: number): Promise<User | undefined> => {
     console.error("Can't load data", err);
   }
 };
-
-export const deleteUser = async () => {
-  try {
-    const response = (await api.delete('/api/me')).data;
-    return response;
-  } catch(err) {
-    console.log("Deleting is failed", err);
-  }
-}

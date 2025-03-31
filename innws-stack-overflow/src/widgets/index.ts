@@ -4,3 +4,4 @@ export { default as PostList } from './post-list/PostList.tsx';
 export { default as MyPostsList } from './post-list/MyPostsList.tsx';
 export { default as CommentsList } from './comments-list/CommentsList.tsx';
 export { default as Account } from './account/Account.tsx';
+export { default as UsersList } from './users-list/UsersList.tsx';

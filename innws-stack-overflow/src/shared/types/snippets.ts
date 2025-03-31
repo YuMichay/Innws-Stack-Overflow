@@ -1,7 +1,7 @@
 import { User } from "./users";
 import { ObjectSchema } from "yup";
 
-type sortTypes = "ASC" | "DESC";
+export type sortTypes = "ASC" | "DESC";
 export type markType = "like" | "dislike";
 
 interface Mark {
