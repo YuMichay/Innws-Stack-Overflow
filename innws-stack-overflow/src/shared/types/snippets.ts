@@ -1,12 +1,7 @@
-type sortTypes = "ASC" | "DESC";
-type role = "admin" | "user";
-export type markType = "like" | "dislike";
+import { User } from "./users";
 
-export interface User {
-  id: string,
-  username: string,
-  role: role,
-}
+type sortTypes = "ASC" | "DESC";
+export type markType = "like" | "dislike";
 
 interface Mark {
   id: string,

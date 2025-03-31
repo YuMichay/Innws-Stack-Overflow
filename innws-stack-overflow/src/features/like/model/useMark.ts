@@ -5,8 +5,8 @@ import { markType } from "../../../shared/types/snippets";
 export const useMark = () => {
   const queryClient = useQueryClient();
 
-  return useMutation<Response, Error, { id: string, type: markType }>({
-    mutationFn: toggleMark,
+  return useMutation<Response, Error, { id: number, type: markType }>({
+    mutationFn: ({id, type}) => toggleMark({id, type}),
     onSuccess: () => {
       queryClient.invalidateQueries({queryKey: ["snippets"]});
     },

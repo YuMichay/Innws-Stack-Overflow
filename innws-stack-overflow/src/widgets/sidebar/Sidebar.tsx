@@ -22,10 +22,10 @@ const SideBar: React.FC = () => {
         <List>
           <CustomListItem linkPath={"/"} icon={<HomeIcon />} text="Home" />
           {isAuth && <CustomListItem linkPath={"/me"} icon={<AccountBoxIcon />} text="My Account" />}
-          <CustomListItem linkPath={"/snippets"} icon={<EmailIcon />} text="Post snippet" />
-          {isAuth && <CustomListItem linkPath={"/my-snippets"} icon={<ContactMailIcon />} text="My snippets" />}
-          <CustomListItem linkPath={"/questions"} icon={<QuestionAnswerIcon />} text="Questions" />
-          <CustomListItem linkPath={"/users"} icon={<GroupIcon />} text="Users" />
+          {isAuth && <CustomListItem linkPath={"/snippet/create"} icon={<EmailIcon />} text="Post snippet" />}
+          {isAuth && <CustomListItem linkPath={"/snippets/me"} icon={<ContactMailIcon />} text="My snippets" />}
+          {isAuth && <CustomListItem linkPath={"/questions"} icon={<QuestionAnswerIcon />} text="Questions" />}
+          {isAuth && <CustomListItem linkPath={"/users"} icon={<GroupIcon />} text="Users" />}
         </List>
       </Box>
     </div>

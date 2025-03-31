@@ -6,7 +6,7 @@ import React from "react";
 import { getColorStyle } from "../utils/colorUtils";
 
 interface CustomIconButtonProps {
-  count: number,
+  count?: number,
   icon: React.ReactNode,
   color: OverridableStringUnion<
     "default" | "primary" | "secondary" | "success" | "error" | "info" | "warning",
@@ -21,9 +21,11 @@ const CustomIconButton: React.FC<CustomIconButtonProps> = ({ count, icon, color,
   
   return (
     <IconButton {...colorProps} onClick={onClick} disabled={disabled}>
-      <Badge badgeContent={count} color="secondary" >
-        {icon}
-      </Badge>
+      {count ? (
+        <Badge badgeContent={count} color="secondary" >
+          {icon}
+        </Badge>
+      ) : icon}
     </IconButton>
   )
 }
