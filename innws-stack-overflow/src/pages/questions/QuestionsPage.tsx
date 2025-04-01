@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Pagination } from "@mui/material";
 
 import { ErrorTypography, GreetingTypography, Spinner } from "../../shared";
-import { useQuestions } from "../../entities/question/api/getQuestions";
+import { useQuestions } from "../../entities/question/api/useQuestions";
 import { QuestionsList } from "../../widgets";
 
 const QuestionsPage: React.FC = () => {
@@ -24,7 +24,7 @@ const QuestionsPage: React.FC = () => {
             ) : (
               <>
                 {data?.data.length === 0 && (
-                  <ErrorTypography text="No snippets found" />
+                  <ErrorTypography text="No questions found" />
                 )}
                 {data && data?.data.length > 0 && (
                   <QuestionsList questions={data.data} />

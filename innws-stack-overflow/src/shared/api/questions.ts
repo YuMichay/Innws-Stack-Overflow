@@ -6,6 +6,15 @@ export const getQuestions = async(page: number): Promise<QuestionsData | undefin
     const response = (await api.get(`/api/questions?page=${page}`)).data;
     return response.data;
   } catch(err) {
-    console.error("Error fetching user data:", err);
+    console.error("Cannot load questions data:", err);
+  }
+}
+
+export const getQuestion = async(id: number) => {
+  try {
+    const response = (await api.get(`/api/questions/${id}`)).data;
+    return response.data;
+  } catch(err) {
+    console.error("Cannot load question data:", err);
   }
 }

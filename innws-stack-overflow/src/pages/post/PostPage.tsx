@@ -10,7 +10,6 @@ import { useSnippet } from "../../entities/post/api/useSnippet";
 import { useComments } from "../../entities/comment/api/useComment";
 import { CommentsList } from "../../widgets";
 
-
 const PostPage: React.FC = () => {
   const { id } = useParams();
   const user = localStorage.getItem("username");

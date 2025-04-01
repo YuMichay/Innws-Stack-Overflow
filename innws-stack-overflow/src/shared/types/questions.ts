@@ -1,10 +1,11 @@
 import { sortTypes } from "./snippets"
 import { User } from "./users"
 
-interface Answer {
+export interface Answer {
   id: string,
   content: string,
   isCorrect: boolean,
+  user: User,
 }
 
 export interface Question {

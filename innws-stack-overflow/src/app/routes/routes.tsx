@@ -3,6 +3,7 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { Header, SideBar } from '../../widgets';
 import PrivateRoute from './PrivateRoute';
+import QuestionPage from '../../pages/question/QuestionPage';
 
 const HomePage = React.lazy(() => import('../../pages/home/HomePage'));
 const LoginPage = React.lazy(() => import('../../pages/login/LoginPage'));
@@ -45,6 +46,7 @@ const RoutesWrapper: React.FC = () => {
             <Route path='create' element={<CreateQuestionPage />} />
             <Route path='edit' element={<EditQuestionPage />} />
           </Route>
+          <Route path='/questions/:id' element={<QuestionPage />} />
         </Route>
       </Route>
       <Route path='/register' element={<RegisterPage />} />

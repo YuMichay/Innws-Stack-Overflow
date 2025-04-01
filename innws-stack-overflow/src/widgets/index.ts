@@ -7,3 +7,4 @@ export { default as Account } from './account/Account.tsx';
 export { default as UsersList } from './users-list/UsersList.tsx';
 export { default as User } from './account/User.tsx';
 export { default as QuestionsList } from './quiestions-list/QuestionsList.tsx';
+export { default as AnswersList } from './answers-list/AnswersList.tsx';
