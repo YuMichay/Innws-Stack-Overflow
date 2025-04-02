@@ -13,7 +13,7 @@ export default defineConfig({
         secure: true,
         rewrite: (path) => path,
         configure: (proxy) => {
-          proxy.on('proxyRes', (proxyRes, req, res) => {
+          proxy.on('proxyRes', (_proxyRes, _req, res) => {
             res.setHeader('Access-Control-Allow-Credentials', 'true');
             res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
           });

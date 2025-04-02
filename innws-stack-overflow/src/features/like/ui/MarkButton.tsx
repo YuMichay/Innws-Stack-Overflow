@@ -11,7 +11,7 @@ const MarkButton: React.FC<MarkButtonProps> = ({ snippetId, count, type, icon, c
       icon={icon}
       color={color}
       disabled={disabled}
-      onClick={() => mutate({ id: snippetId, type })}
+      onClick={() => mutate({ id: +snippetId, type })}
     />
   );
 };
