@@ -14,7 +14,6 @@ const PostPage: React.FC = () => {
   const { id } = useParams();
   const user = localStorage.getItem("username");
   const [commentText, setCommentText] = useState("");
-
   const { data: snippet, isLoading: snippetLoading, error: snippetError } = useSnippet(id);
   const { data: comments, isLoading: commentsLoading, error: commentsError } = useComments(id);
   const addCommentMutation = useAddComment(id, () => setCommentText(""));

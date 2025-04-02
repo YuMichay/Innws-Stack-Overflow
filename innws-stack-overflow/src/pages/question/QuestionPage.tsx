@@ -4,26 +4,26 @@ import { ErrorTypography, Spinner } from "../../shared";
 import { QuestionField } from "../../entities";
 import { useQuestion } from "../../entities/question/api/useQuestion";
 
-const QuestionsPage: React.FC = () => {
+const QuestionPage: React.FC = () => {
   const params = useParams();
-  const questionId = params && params.id ? params.id : 0;
-  const { data, isLoading, isError } = useQuestion(+questionId);
+  const questionId = params && params.id ? params.id : "0";
+  const { data: question, isLoading: isQuestionLoading, isError: isQuestionError } = useQuestion(+questionId);
 
   return (
     <div className="page__question">
-      {isError ? (
+      {isQuestionError ? (
         <ErrorTypography text="Can't get the question" />
       ) : (
         <div className="question">
-          {isLoading ? (
+          {isQuestionLoading ? (
             <Spinner />
           ) : (
             <>
-              {!!data.length && (
+              {!question && (
                 <ErrorTypography text="No question is found" />
               )}
-              {data && (
-                <QuestionField question={data} />
+              {question && (
+                <QuestionField question={question} />
               )}
             </>
           )}
@@ -34,4 +34,4 @@ const QuestionsPage: React.FC = () => {
   )
 }
 
-export default QuestionsPage;
+export default QuestionPage;

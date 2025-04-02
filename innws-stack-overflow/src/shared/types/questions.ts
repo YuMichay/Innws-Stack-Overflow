@@ -1,3 +1,4 @@
+import { ObjectSchema } from "yup"
 import { sortTypes } from "./snippets"
 import { User } from "./users"
 
@@ -43,4 +44,23 @@ export interface QuestionsData {
     next: string,
     last: string
   }
+}
+
+export interface QuestionData {
+  title: string,
+  description: string,
+  attachedCode: string,
+}
+
+export interface FormQuestionProps {
+  schema: ObjectSchema<{
+    title: string,
+    description: string,
+    attachedCode: string,
+  }>,
+  onSubmit: (data: QuestionData) => Promise<void>, 
+  loading: boolean, 
+  error: string | null,
+  type: string,
+  id?: string,
 }

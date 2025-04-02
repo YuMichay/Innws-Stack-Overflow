@@ -8,5 +8,6 @@ export { default as EditPostPage } from './editPost/EditPostPage.tsx';
 export { default as UsersPage } from './users/UsersPage.tsx'; 
 export { default as UserPage } from './user/UserPage.tsx';
 export { default as QuestionsPage } from './questions/QuestionsPage.tsx';
+export { default as QuestionPage } from './question/QuestionPage.tsx';
 export { default as CreateQuestionPage } from './createQuestion/CreateQuestionPage.tsx';
 export { default as EditQuestionPage } from './editQuestion/EditQuestionPage.tsx';

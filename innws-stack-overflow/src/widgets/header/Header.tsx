@@ -16,7 +16,7 @@ const Header: React.FC = () => {
       <Logo />
       <Stack direction="row" columnGap="20px">
         {isQuestionPage && (
-          <Button variant="contained">Ask Question</Button>
+          <Button variant="contained" onClick={() => navigate("/questions/create")}>Ask Question</Button>
         )}
         {isAuth ? (
             <Button variant="contained" onClick={() => logoutUserUtils(setIsAuth)}>Log out</Button>

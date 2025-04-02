@@ -1,14 +1,19 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import HelpIcon from '@mui/icons-material/Help';
+import EditIcon from '@mui/icons-material/Edit';
 import { Typography } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import SyntaxHighlighter from 'react-syntax-highlighter';
+import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 import { Question } from "../../../shared/types/questions";
 import { CustomIconButton } from '../../../shared';
 import { AnswersList } from '../../../widgets';
 import { AddAnswer } from '../../../features';
 import { useAddAnswer } from '../../../features/add-answer/api/useAddAnswer';
+import { useProfile } from '../../user/api/getProfileInfo';
+import { useAuth } from '../../../shared/hooks/useAuth';
 
 interface QuestionFieldProps {
   question: Question,
@@ -19,6 +24,9 @@ const QuestionField: React.FC<QuestionFieldProps> = ({ question }) => {
   const location = useLocation();
   const questionId = question.id;
   const isQuestionPage = location.pathname === `/questions/${questionId}`;
+  const user = useProfile().data;
+  const isMine = question.user.id === user?.id;
+  const { isAuth } = useAuth();
   const [answerText, setAnswerText] = useState("");
   const addAnswerMutation = useAddAnswer(questionId, () => setAnswerText(""));
 
@@ -30,6 +38,10 @@ const QuestionField: React.FC<QuestionFieldProps> = ({ question }) => {
   const handleClick = () => {
     navigate(`/questions/${question.id}`);
   };
+
+  const handleEditClick = () => {
+    navigate("/questions/edit", { state: { questionId: question.id } });
+  }
 
   return (
     <>
@@ -45,17 +57,33 @@ const QuestionField: React.FC<QuestionFieldProps> = ({ question }) => {
           <Typography variant="subtitle1">{question.description}</Typography>
           {isQuestionPage && (
             <div className="question-field-code">
-              <Typography variant="subtitle2">{question.attachedCode}</Typography>
+              <SyntaxHighlighter
+                language={"plain-text"}
+                style={atomOneDark}
+                showLineNumbers={true}
+                wrapLongLines={true}
+                customStyle={{
+                  borderRadius: "8px",
+                  fontSize: "14px",
+                  lineHeight: "1.2",
+                  whiteSpace: "pre-wrap",
+                  wordBreak: "break-word",
+                  overflow: "hidden"
+                }}
+              >{question.attachedCode}</SyntaxHighlighter>
             </div>
           )}
         </div>
-        {!isQuestionPage && <CustomIconButton icon={<VisibilityIcon />} disabled={false} color="primary" onClick={handleClick} />}
+        <div className="controls">
+          {!isQuestionPage && <CustomIconButton icon={<VisibilityIcon />} disabled={false} color="primary" onClick={handleClick} />}
+          {isMine && <CustomIconButton disabled={!isAuth} icon={<EditIcon />} color="primary" onClick={handleEditClick} />}
+        </div>
       </div>
       {isQuestionPage && <AddAnswer answerText={answerText} setAnswerText={setAnswerText} handleAddAnswer={handleAddAnswer} />}
-      {isQuestionPage && !!question.answers.length && (
+      {isQuestionPage && question.answers && (
         <div className="answers">
           <Typography variant="h6">Answers</Typography>
-          <AnswersList answers={question.answers} />
+          <AnswersList questionId={question.id} />
         </div>
       )}
     </>

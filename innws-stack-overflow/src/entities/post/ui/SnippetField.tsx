@@ -67,7 +67,7 @@ const SnippetField: React.FC<SnippetProps> = ({ snippet, onClick }) => {
           <MarkButton disabled={!isAuth} snippetId={snippet.id} type="dislike" count={snippet.marks?.filter((mark) => mark.type === 'dislike').length || 0} icon={<ThumbDownIcon />} color="#FF3D77" />
         </div>
         <div className="snippet-footer-icons">
-          {isMine && <CustomIconButton disabled={!isAuth} count={snippet.comments?.length || 0} icon={<EditIcon />} color="primary" onClick={handleEditClick} />}
+          {isMine && <CustomIconButton disabled={!isAuth} icon={<EditIcon />} color="primary" onClick={handleEditClick} />}
           <CustomIconButton disabled={!isAuth} count={snippet.comments?.length || 0} icon={<CommentIcon />} color="primary" onClick={handleClick} />
         </div>
       </div>

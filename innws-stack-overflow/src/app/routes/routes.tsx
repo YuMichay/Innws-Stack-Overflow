@@ -3,7 +3,6 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 
 import { Header, SideBar } from '../../widgets';
 import PrivateRoute from './PrivateRoute';
-import QuestionPage from '../../pages/question/QuestionPage';
 
 const HomePage = React.lazy(() => import('../../pages/home/HomePage'));
 const LoginPage = React.lazy(() => import('../../pages/login/LoginPage'));
@@ -16,6 +15,7 @@ const EditPostPage = React.lazy(() => import('../../pages/editPost/EditPostPage'
 const UsersPage = React.lazy(() => import('../../pages/users/UsersPage'));
 const UserPage = React.lazy(() => import('../../pages/user/UserPage'));
 const QuestionsPage = React.lazy(() => import('../../pages/questions/QuestionsPage'));
+const QuestionPage = React.lazy(() => import('../../pages/question/QuestionPage'));
 const CreateQuestionPage = React.lazy(() => import('../../pages/createQuestion/CreateQuestionPage'));
 const EditQuestionPage = React.lazy(() => import('../../pages/editQuestion/EditQuestionPage'));
 
@@ -42,11 +42,10 @@ const RoutesWrapper: React.FC = () => {
           <Route path='/snippets/me' element={<MyPostsPage />} />
           <Route path='/users' element={<UsersPage />} />
           <Route path="/users/:id" element={<UserPage />} />
-          <Route path='/questions' element={<QuestionsPage />}>
-            <Route path='create' element={<CreateQuestionPage />} />
-            <Route path='edit' element={<EditQuestionPage />} />
-          </Route>
+          <Route path='/questions' element={<QuestionsPage />} />
           <Route path='/questions/:id' element={<QuestionPage />} />
+          <Route path='/questions/create' element={<CreateQuestionPage />} />
+          <Route path='/questions/edit' element={<EditQuestionPage />} />
         </Route>
       </Route>
       <Route path='/register' element={<RegisterPage />} />

@@ -1,14 +1,23 @@
+import { useAnswers } from "../../entities/answer/api/useAnswers";
 import AnswerField from "../../entities/answer/ui/AnswerField";
-import { Answer } from "../../shared/types/questions"
+import { ErrorTypography, Spinner } from "../../shared";
 
 interface AnswersListProps {
-  answers: Answer[];
+  questionId: string,
 }
 
-const AnswersList: React.FC<AnswersListProps> = ({ answers }) => {
+const AnswersList: React.FC<AnswersListProps> = ({ questionId }) => {
+  const { data, isLoading, isError } = useAnswers(questionId);
+
   return (
     <div className="answers-list">
-      {answers.map((answer) => <AnswerField key={answer.id} answer={answer} />)}
+      { isLoading && <Spinner /> }
+      { isError && <ErrorTypography text="No answers" /> }
+      { data && (
+        <>
+          {data.map((answer) => <AnswerField key={answer.id} answer={answer} />)}
+        </>
+      )}
     </div>
   )
 };
