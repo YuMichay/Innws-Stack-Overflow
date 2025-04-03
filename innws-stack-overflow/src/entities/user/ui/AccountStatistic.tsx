@@ -7,7 +7,7 @@ const AccountStatistic: React.FC = () => {
   const statistic = useStatistic(+id).data;
 
   return (
-    <div className="user-statistic">
+    <div className="account-statistic">
       <Typography variant="subtitle2">Rating: {statistic && statistic.rating}</Typography>
       <Typography variant="subtitle2">Snippets: {statistic && statistic.snippetsCount}</Typography>
       <Typography variant="subtitle2">Comments: {statistic && statistic.commentsCount}</Typography>
