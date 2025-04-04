@@ -1,0 +1,13 @@
+export { default as HomePage } from './home/HomePage.tsx';
+export { default as LoginPage } from './login/LoginPage.tsx';
+export { default as RegisterPage } from './register/RegisterPage.tsx';
+export { default as AccountPage } from './account/AccountPage.tsx';
+export { default as CreatePostPage } from './createPost/CreatePostPage.tsx';
+export { default as MyPostsPage } from './myPosts/MyPostsPage.tsx';
+export { default as EditPostPage } from './editPost/EditPostPage.tsx';
+export { default as UsersPage } from './users/UsersPage.tsx'; 
+export { default as UserPage } from './user/UserPage.tsx';
+export { default as QuestionsPage } from './questions/QuestionsPage.tsx';
+export { default as QuestionPage } from './question/QuestionPage.tsx';
+export { default as CreateQuestionPage } from './createQuestion/CreateQuestionPage.tsx';
+export { default as EditQuestionPage } from './editQuestion/EditQuestionPage.tsx';
